@@ -1,0 +1,256 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>Untitled</title>
+  <meta name="viewport" content="width = device-width,maximum-scale=1,user-scalable=no">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+  .umsg {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  width: 200px;
+  position: relative;
+  left: 5%;
+  box-shadow: 0 2px 1px rgba(0,0,0,0.09),
+              0 4px 2px rgba(0,0,0,0.09),
+              0 8px 4px rgba(0,0,0,0.09),
+              0 16px 8px rgba(0,0,0,0.09),
+              0 32px 16px rgba(0,0,0,0.09);
+}
+
+.botmsg {
+  border-color: #ccc;
+  background-color: ;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  width: 200px;
+  position: relative;
+  left: 15%;
+  box-shadow: 0 2px 1px rgba(0,0,0,0.09),
+              0 4px 2px rgba(0,0,0,0.09),
+              0 8px 4px rgba(0,0,0,0.09),
+              0 16px 8px rgba(0,0,0,0.09),
+              0 32px 16px rgba(0,0,0,0.09);
+}
+body {
+  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+  width: 100%;
+
+
+}
+#header, #footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 50px;
+    background: #3366FF;
+
+}
+
+
+#footer {
+    bottom: 0;
+    top: auto;
+}
+#container {
+    position: absolute;
+    top: 75px;
+    bottom: 50px;
+    width: 100%;
+    overflow: auto;
+     margin: 5px;
+}
+
+#search{
+  position: fixed;
+  bottom: 2%;
+  border-radius: 20px;
+  border: 1px solid #06d6a0 ;
+  color: #000000;
+  font-size: medium;
+  width: 75%;
+  height: 20px;
+  padding-left: 10px;
+  margin-left: 10px;
+  outline: none;
+  box-shadow: 0 0 5px #ff0000 , 0 0 10px #0000ff;
+}
+
+#sendimg{
+  position: fixed;
+  display : inline;
+  border-radius: 50%;
+  right: 20px;
+  height: 33px;
+  bottom: 1.8%;
+
+}
+#botimg{
+  position: fixed;
+  border-radius: 50%;
+  left: 20px;
+  height: 40px;
+  margin: 5px;
+}
+#tit{
+  position: fixed;
+  left: 75px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: bold;
+}
+#info,#back{
+   position: fixed;
+    right: 20px;
+    top: 15px;
+    margin: 5px;
+    font-weight: bold;
+    font-size: large;
+
+}
+#main2{
+    display: none;
+}
+
+
+  </style>
+</head>
+
+<body>
+<article id ="main1">
+<div id ="header">
+<img  id ="botimg" src="https://www.dropbox.com/s/sghwn19ibyetizy/bot.jpeg?raw=1" alt="" />
+<p id = "tit">Askimo</p>
+<p  id ="info" onclick = "info()">&#9432;</p>
+</div>
+<div id = "container">
+</div>
+<div id = "footer">
+ <input id ="search" placeholder ="Type a message" autofocus>
+ <img  id = "sendimg" src="https://www.dropbox.com/s/rsqcn0ujk4p5gr0/send.png?raw=1" onclick = "fetch()" alt="" />
+ </div>
+ </article>
+ <article id ="main2">
+ <p id = "back" onclick ="back()">&larr;</p>
+ <p style="text-align: center; font-weight: bold">Askimo</p>
+ <ul  style="font-style: italic">
+  <li>Askimo is a user interactive chatbot powered by wikpedia</li>
+  <li>You can ask a lot questions or about topic you want to know</li>
+  <li>Askimo will fetch results for you.</li>
+  <li>Use spaces betweeb two words so that Askimo recognizes your request</li>
+  <li>Ask questions like "Tell about mars" or "what is virus" or "who is virat kohli" and so on.</li>
+  <li> You can ask as much of questions as you need</li>
+  <li>If any error or any suggesstions kindly notify me so that I can update for better performance</li>
+ </ul>
+ </article>
+</body>
+
+<script>
+var res, words, word_clean;
+var stopwords =["i", "me", "my", "myself", "we", "our", "ours", "ourselves", "your", "yours", "yourself", "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its", "itself", "they", "them", "their", "theirs", "themselves", "what", "which", "who", "whom", "this", "that", "these", "those", "am", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had", "having", "do", "does", "did", "doing", "a", "an", "the", "and", "but", "if", "or", "because", "as", "until", "while", "of", "at", "by", "for", "with", "about", "against", "between", "into", "through", "during", "before", "after", "above", "below", "to", "from", "up", "down", "in", "out", "on", "off", "over", "under", "again", "further", "then", "once", "here", "there", "when", "where", "why", "how", "all", "any", "both", "each", "few", "more", "most", "other", "some", "such", "no", "nor", "not", "only", "own", "same", "so", "than", "too", "very", "s", "t", "can", "will", "just", "don", "should", "now", "?", "tell"]
+var msg =["hi",
+  "hello",
+  "name",
+  "you",
+  "bye",
+  "goodbye"]
+
+
+var reply =["Hi!..How can I help you?",
+  "Hello..  I'm Glad to talk with you. Ask me anything",
+  "My name is Askimo.I'm your personal assisstant",
+  "I'm  Askimo a bot and  I'm super fine. Ask your quesitons",
+  "Had a nice time talking with you. Hope we talk later",
+  "Ok bye.. Let's talk another day"]
+
+
+function fetch()
+{
+  var search = document.getElementById("search").value;
+  var success = 0;
+
+  //display your msg
+  var upara = document.createElement("p");
+  upara.className = "umsg";
+  var unode = document.createTextNode(search);
+  upara.appendChild(unode);
+  document.getElementById("container").appendChild(upara);
+
+  search = search.toLowerCase();
+  //removing stopwords
+  res =[];
+  words = search.split(' ');
+  for(i = 0; i<words.length; i++)
+  {
+    word_clean = words[i].split(".").join("");
+    if(!stopwords.includes(word_clean))
+    {
+      res.push(word_clean);
+    }
+  }
+  search = res.join(' ');
+  for(var i = 0; i< msg.length; i++)
+  {
+    if(msg[i].toLowerCase() == search)
+    {
+      res = reply[i]; success = 1;
+    }
+  }
+  search = search.replace(/(^\w|\s\w)(\S*)/g, (_, m1, m2) => m1.toUpperCase()+m2.toLowerCase());
+  search = search.replace(/ /g, "_");
+  if(success == 0)
+  {
+    // api request
+    var URL = "https://en.wikipedia.org/api/rest_v1/page/summary/"+search;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', URL, false);
+    xhr.send();
+    var res = JSON.parse(xhr.response);
+    if(res.title == "Not found.")
+      res = "sorry I can't get you. Try adding space between two words or I may not be programmed for it"
+      else
+        res = res.extract;
+  }
+  //display botmsg
+
+  var bpara = document.createElement("p");
+  bpara.className = "botmsg"
+  var bnode = document.createTextNode(res);
+  bpara.appendChild(bnode);
+  document.getElementById("container").appendChild(bpara);
+  document.getElementById("search").value = "";
+  $(".umsg").last()[0].scrollIntoView(
+    {
+    behavior: 'smooth'
+    }
+  );
+
+}
+function info()
+{
+  document.getElementById("main1").style.display = "none";
+  document.getElementById("main2").style.display = "block";
+}
+function back()
+{
+  document.getElementById("main1").style.display = "block";
+  document.getElementById("main2").style.display = "none";
+}
+
+//Done by sundar
+//hope you like it
+
+</script>
+
+</html>
