@@ -230,11 +230,14 @@ function fetch()
   bpara.appendChild(bnode);
   document.getElementById("container").appendChild(bpara);
   document.getElementById("search").value = "";
-  $(".umsg").last()[0].scrollIntoView(
+  setTimeout(()=>{
+  var t=
+  document.getElementsByClassName("umsg")
+  t[t.length-1].scrollIntoView(
     {
     behavior: 'smooth'
     }
-  );
+  );},150)
 
 }
 function info()
