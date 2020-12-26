@@ -1,0 +1,519 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,initialscale=1,maximum-scale=1,user-scalable=no">
+  <title>Sundar's Resume</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+html
+{
+    background-image: linear-gradient(315deg, #4b9ddb, #59baff);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+body
+{
+    font-family: 'Times New Roman', Times, serif;
+    overflow-x: auto;
+    margin: 0;
+}
+
+#personal,
+#skills,
+#academics,
+#projects,
+#section1,
+#section-1,
+#section3
+{
+    padding: 5px;
+    border: solid 1px transparent;
+}
+#skillshead,
+#academicshead,
+#projectshead,
+#personalhead
+{
+    font-family: 'Kaushan Script', cursive;
+    text-align: center;
+    border-radius: 2px;
+    position: sticky;
+    top: 0;
+    background: #d5e0e6;
+    box-shadow: 2px 2px 6px #c2ccd1,
+    -1px -1px 3px #e8f4fb;
+    height: 25px;
+}
+
+#section-2,
+#section-1,
+#section-3,
+#section-4
+{
+    display: none;
+}
+
+#section-3,
+#section-4,
+#footer
+{
+    display: flex ;
+    align-items: center;
+    justify-content: center ;
+    flex-direction: column;
+}
+table,
+#acheivements
+{
+    border-radius: 36px;
+    box-shadow: -5px -5px 10px #4692cc,
+    5px 5px 10px #60caff;
+}
+
+table
+{
+    overflow: auto;
+    color: black;
+    margin: auto;
+    padding: 5px;
+    display: block;
+    border-collapse: separate;
+    border-spacing: 1em 1em;
+}
+.icon
+{
+    display: inline-block;
+    padding: 5px;
+    margin: 2px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: #292724;
+    box-shadow: inset -5px -5px 8px #181715,
+    inset 5px 5px 8px #3a3733;
+}
+
+
+.txt
+{
+    color: #ffffff;
+    margin-top: 2px;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+@media screen and (min-width: 601px)
+{
+    .txt,
+    table
+    {
+        font-size: 20px;
+    }
+    .icon img
+    {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 600px)
+{
+    .txt,
+    table
+    {
+        font-size: 12px;
+    }
+    .icon img
+    {
+        width: 50px;
+        height: 50px;
+    }
+}
+.projcont
+{
+    border-radius: 36px;
+    box-shadow: -5px -5px 10px #4692cc,
+    5px 5px 10px #60caff;
+    flex-direction: row;
+    display: inline-block;
+    margin: 10px;
+}
+.projlist
+{
+    width: 220px;
+    height: 220px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.projtit
+{
+    font-weight: bold;
+    text-align: left !important;
+}
+
+.projcatg
+{
+    font-style: italic;
+    text-align: right !important;
+    color: #330099;
+}
+#anim
+{
+    margin: 2px;
+    animation: swing 3s ease-in-out infinite;
+    text-align: center;
+    font-family: 'Audiowide', cursive;
+}
+
+
+@keyframes swing
+{
+    0%
+    {
+        transform-origin: top;
+        transform: perspective(550px)rotatex(55deg);
+    }
+
+    50%
+    {
+        transform: perspective(550px)rotatex(-55deg);
+    }
+
+    100%
+    {
+        transform-origin: top;
+        transform: perspective(550px)rotatex(55deg);
+    }
+}
+a:hover
+{
+    color: red;
+}
+.projcont:hover,
+.icon:hover,
+#footer div:hover,
+table:hover,
+#acheivements:hover
+{
+    border: 2px solid white;
+}
+#footer
+{
+    position: relative;
+    bottom: 10%;
+    flex-direction: row;
+}
+
+#footer div
+{
+    border-radius: 20px;
+    box-shadow: -5px -5px 10px #4692cc,
+    5px 5px 10px #60caff;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+}
+</style>
+
+</head>
+
+<body >
+    <article id ="header"  style="text-align: center;overflow: hidden">
+    <br>
+     <h1 id ="anim"> < S U N D A R /> </h1>
+     <text class ="txt" style="font-style: italic;font-family: monospace;color: #fff">-- Curious to explore the technical world and gain some knowledge --</text>
+    </article>
+    <br><br><br>
+     <article id ="skills">
+    <div id ="skillshead" onclick = "toggle('section-1')"><b>- - SKILLS - -</b></div>
+      <div id="section-1"  style="text-align: center">
+      <br><br><text class ="txt" style="text-align: center; font-weight: bold;color:#000">LEVEL: INTERMEDIATE</text><br><br>
+      <div class="icon"> <img   src="https://www.dropbox.com/s/p81a3cho8c0vmlo/html5.png?raw=1" alt="html5 logo, html logo" /><text class ="txt"><br>HTML</text></div>
+      <div class="icon"> <img  src="https://www.dropbox.com/s/c7gqgw56wmzg1zs/css-3.png?raw=1" alt="css logo"/><text class ="txt"><br> CSS </text></div>
+      <div class="icon"><img   src="https://www.dropbox.com/s/f77sv0pf7jb4wc2/JS.png?raw=1" alt="JS logo png" /><text class ="txt"><br> JS </text></div>
+      <div class="icon"><img   src="https://www.dropbox.com/s/527q6bmcvxn1uq7/jquery.png?raw=1"  alt="Jquery"/><text class ="txt"><br>JQUERY</text></div>
+      <div class="icon"><img  src="https://www.dropbox.com/s/phrarlctueo8akk/react.png?raw=1"  alt="React"/><text class ="txt"><br>REACT</text></div>
+      <div class="icon"><img   src="https://www.dropbox.com/s/2a93xi3vs92maff/C.png?raw=1" alt="C"/><text class ="txt"><br> C </text></div>
+      <div class="icon"><img   src="https://www.dropbox.com/s/8302cspj75jdfmr/C%2B%2B.png?raw=1" alt="C++"/><text class ="txt"><br> C++ </text></div>
+      <div class="icon"><img  src="https://www.dropbox.com/s/46jio2vumxqdg51/firebase.png?raw=1"  alt="firebase" /><text class ="txt"><br> FIREBASE </text></div>
+      <br><br><text  class ="txt" style="text-align: center; font-weight: bold;color:#000">LEVEL: NEWBIE</text><br><br>
+      <div class="icon"><img  src="https://www.dropbox.com/s/phrarlctueo8akk/react.png?raw=1"  alt="React"/><text class ="txt"><br>NATIVE</text></div>
+      <div class="icon"><img  src="https://www.dropbox.com/s/0tb5li3af9ee31a/python.png?raw=1"  alt="python" /><text class ="txt"><br> PYTHON </text></div>
+      </div>
+    </article>
+     <article id ="projects" >
+         <div id ="projectshead" onclick = "toggle('section-2')"><b>- - PROJECTS - -</b></div>
+        <div id="section-2"  style="text-align: center;margin:10px;">
+        </div>
+    </article>
+     <article id ="academics">
+         <div id ="academicshead" onclick = "toggle('section-3')"><b>- - ACADEMICS - -</b></div>
+        <div id="section-3"  style="margin:20px;">
+         <br><br><br>
+        <table  style="text-align: center">
+            <tr  style="font-weight: bold">
+                <td>COURSE</td>
+                <td>INSTITUTE</td>
+                <td>YEAR OF PASSING</td>
+                <td>MARK-SCORED</td>
+            </tr>
+            <tr>
+                <td><span style="text-decoration: overline">B.E. (ECE)</span></td>
+                <td>Madras Institute of Technology,<br>Anna University</td>
+                <td>2022<br>(Expected)</td>
+                <td>CGPA 9.08</td>
+            </tr>
+            <tr>
+                <td>HSLC</td>
+                <td>Sri Jayendra Swamigal Silver Jubilee Mat. Hr Sec School,<br>Tirunelveli.</td>
+                <td>2018</td>
+                <td>98.1%</td>
+            </tr>
+            <tr>
+                <td>SSLC</td>
+                <td>Sri Jayendra Swamigal Silver Jubilee Mat. Hr Sec School,<br>Tirunelveli.</td>
+                <td>2016</td>
+                <td>98.2%</td>
+            </tr>
+        </table>
+        <br>
+        <div id="acheivements">
+           <br>
+           <div class ="txt" style="text-align: center; font-weight: bold;color:#000">ACHIEVEMENTS</div>
+            <ul class ="txt" style="color:#000; font-weight: normal; padding-top: 20px;padding-right: 20px" >
+                <li>Certificate of Brilliance in AITSE</li>
+                <li>Cleared NISO twice with AIR 4 & 5</li>
+                <li>Reginoal Second place in TMAQ</li>
+
+            </ul>
+        </div>
+         </div>
+    </article>
+
+    <article id = "personal">
+        <div id ="personalhead" onclick = "toggle('section-4')"><b>- - ABOUT-ME - -</b></div>
+        <div id="section-4">
+            <br><br><br>
+           <table >
+
+            <tr>
+                <td  style="font-weight: bold">Name:</td>
+                <td>  D.Sundara Lingam</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Gender:</td>
+                <td>  Male</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Age:</td>
+                <td id ="age"> </td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">E-mail:</td>
+                <td><a href="sundarlinga6@gmail.com">  sundarlinga6@gmail.com</a></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Mobile-no:</td>
+                <td>  6379633784</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Address:</td>
+                <td>  1,kulasekara alwar street,<br>Palayamkottai,<br>Tirunelveli-627002<br>TamilNadu</td>
+            </tr>
+             <tr>
+                <td style="font-weight: bold">Nationality: </td>
+                <td>    Indian</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Languages: </td>
+                <td>    English - Speak,Write & Type<br>Tamil - Speak & Write</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Hobbies: </td>
+                <td>    Quizzing & Gaming</td>
+            </tr>
+        </table>
+        <br><br>
+       </div>
+    </article>
+    <br><br><br>
+<article id="footer">
+<div><a href="tel:+91-637-963-3784">
+    <img src="https://www.dropbox.com/s/gji5tzeakyap232/smartphone-call.png?raw=1" width="30" height="30" alt="call" />
+</a></div>
+<div><a href = "https://wa.link/3w7cvk">
+    <img src="https://www.dropbox.com/s/joh2o0ke3vnsku9/whatsapp.png?raw=1" width="30" height="30"  alt="whatsapp" />
+</a></div>
+<div><a href ="https://www.instagram.com/s._u._n._d._a._r/">
+    <img src="https://www.dropbox.com/s/tmdrvt3jq9hncnn/instagram.png?raw=1" width="30" height="30" alt="insta" />
+</a></div>
+
+
+
+</article>
+
+</body>
+<script>
+$("#section-3").slideUp("fast");
+$("#section-4").slideUp("fast");
+document.getElementById("age").innerHTML = new Date().getFullYear() - 2000;
+
+//sliding event
+function toggle(show)
+{
+
+  $('#'+show).fadeToggle("slow");
+
+}
+</script>
+<script type="text/babel">
+//using react to create project containers
+class Projects extends React.Component {
+       constructor(){
+        super();
+        //project datas
+        this.state = {
+            project:[{
+                id: 1,
+                title: "Askimo",
+                category: "(Web)",
+                description: "User Interactive chatbot that searches through wikipedia",
+                used:  ["Wikipedia Rest-API",
+                        "Stopword - filtering","Vannila-JS"
+                        ],
+                link: "https://sundar-2000.github.io/chatbot/",
+                repo: "https://github.com/sundar-2000/chatbot"
+              },
+              {
+                id: 2,
+                title: "Justpay",
+                category: "(Web)",
+                description: "A mobile payment app that has login and sign-in feature",
+                used:  ["Firebase RTDatabase",
+                        "Neumorphic UI"
+                        ],
+                link: "https://sundar-2000.github.io/justpay/",
+                repo: "https://github.com/sundar-2000/justpay"
+              },
+              {
+                id: 3,
+                title: "Weather-App",
+                category: "(Web)",
+                description: "Webapp to know the weather of any area",
+                used:  ["Openweathermap-API",
+                        "Darkmode"
+                        ],
+                link: "https://sundar-2000.github.io/weatherapp/",
+                repo: "https://github.com/sundar-2000/weatherapp"
+              },
+               {
+                id: 4,
+                title: "Handcricket",
+                category: "(Web)",
+                description: "Play handcricket with bot and relive your childhood",
+                used:  ["Vannila-JS"
+                        ],
+                link: "https://sundar-2000.github.io/handcricket/",
+                repo: "https://github.com/sundar-2000/handcricket"
+              },
+               {
+                id: 5,
+                title: "News-App",
+                category: "(Android/ios)",
+                description: "Know the headlines and search through old articles",
+                used:  ["React-Native",
+                        "Googlenews-api",
+                        "Darkmode"
+                        ],
+                link: "https://github.com/sundar-2000/news-app/blob/main/app-armeabi-v7a-release.apk?raw=true",
+                repo: "https://github.com/sundar-2000/news-app"
+              },
+              {
+                id: 6,
+                title: "Greenhouse Monitoring",
+                category: "(Electronics)",
+                description: "Monitors soil moisture and temperature",
+                used:  ["Arduino",
+                        "YL-38 sensor",
+                        "LM35 sensor"
+                        ],
+                link: "",
+                repo: ""
+
+              },
+              {
+                id: 7,
+                title: "DTMF Decoder",
+                category: "(Electronics)",
+                description: "Use your phone as a switch for electrical devices",
+                used:  ["IC-MT8870DE",
+                        "IC-555"
+
+                        ],
+                link: "",
+                repo: ""
+
+              }
+
+              ]
+        }
+    }
+    //rendering the data collected
+    render(){
+        const {project} = this.state;
+        return(
+            <div>
+               { project.map((data)=>{
+                                return(
+                                    <article className="projcont" >
+                                     <div  className="projlist">
+                                       <div>
+                                       <div  className="projtit">{data.title}
+                                       <div className="projcatg">{data.category}</div></div>
+                                       </div>
+                                        <div style={{textAlign: "left"}}><text className="projdes">{data.description}</text></div>
+                                        <div style={{color: "#bb0d57",height:"40%",textAlign: "left"}}>
+                                         <ul>
+                                         {data.used.map((item) => (
+                                         <li>{item}</li>
+                                         ))
+                                          }
+                                          </ul>
+                                        </div>
+                                        <br />
+                                          <div style={{fontWeight: "bold",textAlign: "right"}}>
+                                         { data.link!="" ?  <span> | <a href= {data.link}><u>View</u></a></span>: <span style={{color: "transparent"}} >_</span>}
+                                         { data.repo!="" ?  <span> | <a href= {data.repo}><u>Git-Repo</u></a></span>: <span> </span>}
+
+                                        </div>
+                                     </div>
+                                    </article>
+
+                                )
+                            })
+                        }
+
+
+
+            </div>
+        )
+    }
+}
+
+ReactDOM.render(<Projects />, document.getElementById('section-2'))
+
+
+
+</script>
+
+</html>
