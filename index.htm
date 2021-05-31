@@ -1,391 +1,525 @@
-<!DOCTYPE HTML>
-
+<!DOCTYPE html>
 <html>
-
 <head>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initialscale=1,maximum-scale=1,user-scalable=no">
+  <meta name="title" content="Sundar's Resume">
+  <meta name="description" content="Want to konw about me??">
   <title>Sundar's Resume</title>
+  <!--fonts-->
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <!--Bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  <!--font-awesome-->
+  <script src="https://kit.fontawesome.com/6b08127ac9.js" crossorigin="anonymous"></script>
+  <!--React-->
   <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!--JQuery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<style>
-html
-{
-    background-image: linear-gradient(315deg, #4b9ddb, #59baff);
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-}
-body
-{
-    font-family: 'Times New Roman', Times, serif;
-    overflow-x: auto;
+  <style>
+  *
+  {
+  user-select: none;
+  scroll-behavior: smooth;
+  }
+  body
+  {
+    position: relative;
     margin: 0;
-}
-
-#personal,
-#skills,
-#academics,
-#projects,
-#section1,
-#section-1,
-#section3
-{
-    padding: 5px;
-    border: solid 1px transparent;
-}
-#skillshead,
-#academicshead,
-#projectshead,
-#personalhead
-{
-    font-family: 'Kaushan Script', cursive;
+  }
+  #intro{
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 3.5rem 0;
+    margin-top: 3rem;
+  }
+  #intro_txt{
+    font-family: 'Poppins', sans-serif;
+    flex: 1;
     text-align: center;
-    border-radius: 2px;
-    position: sticky;
-    top: 0;
-    background: #d5e0e6;
-    box-shadow: 2px 2px 6px #c2ccd1,
-    -1px -1px 3px #e8f4fb;
-    height: 25px;
-}
+    color: #6A5EB4;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+  #intro_img{
+    background: url('assets/intro.png')  no-repeat center;
+    background-size: contain;
+    min-height: 85vh;
+    flex:1;
+    filter: drop-shadow(2px 2px 6px rgba(0,0,0,0.5));
+  }
+  #intro_link{
+    cursor: pointer;
+    color: #6A5EB4;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    width: max-content;
+    padding: 1rem;
+    border: 2px solid#6A5EB4;
+    box-shadow: 0px 15px 20px -15px rgba(1,1,1,0.5);
+    transition: all 500ms ease;
+  }
+  #intro_link:hover{
+    background-color: #6A5EB4;
+    color: #fff;
+  }
+  #intro_btn{
+    animation: bounce 2s ease infinite;
+  }
+  @keyframes bounce {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+  }
 
-#section-2,
-#section-1,
-#section-3,
-#section-4
-{
-    display: none;
-}
+  #skillshead,
+  #projectshead,
+  #academicshead,
+  #personalhead{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-size: 2rem;
+  }
 
-#section-3,
-#section-4,
-#footer
-{
+  #personal,
+  #skills,
+  #academics,
+  #projects
+  {
+    padding: 4rem 1rem;
+  }
+
+  #section-3,
+  #section-4,
+  #footer
+  {
     display: flex ;
     align-items: center;
     justify-content: center ;
     flex-direction: column;
-}
-table,
-#acheivements
-{
+  }
+  table,
+  #acheivements
+  {
     border-radius: 36px;
-    box-shadow: -5px -5px 10px #4692cc,
-    5px 5px 10px #60caff;
-}
+  }
 
-table
-{
-    overflow: auto;
+  table
+  {
     color: black;
-    margin: auto;
-    padding: 5px;
+    padding: 1rem 0.25rem;
     display: block;
     border-collapse: separate;
-    border-spacing: 1em 1em;
-}
-.icon
-{
+    border-spacing: 1rem 1rem;
+  }
+  .icon
+  {
     display: inline-block;
-    padding: 5px;
-    margin: 2px;
+    padding: 0.3rem;
+    margin: 0.1rem;
     border: 1px solid transparent;
     border-radius: 10px;
     background: #292724;
     box-shadow: inset -5px -5px 8px #181715,
     inset 5px 5px 8px #3a3733;
-}
+  }
 
 
-.txt
-{
+  .txt
+  {
     color: #ffffff;
     margin-top: 2px;
     text-align: center;
     font-weight: bold;
-}
+  }
 
 
-@media screen and (min-width: 601px)
-{
-    .txt,
-    table
-    {
-        font-size: 20px;
+  @media screen and (min-width: 601px)
+  {
+    html{
+        font-size: 16px;
     }
     .icon img
     {
-        width: 100px;
-        height: 100px;
+        width: 5rem;
+        height: 5rem;
     }
-}
 
-@media screen and (max-width: 600px)
-{
-    .txt,
-    table
-    {
-        font-size: 12px;
+  }
+
+  @media screen and (max-width: 600px)
+  {
+
+    html{
+        font-size: 14px;
+    }
+    #intro{
+        flex-direction: column;
+    }
+    #intro_img{
+        width: 75%;
     }
     .icon img
     {
-        width: 50px;
-        height: 50px;
+        width: 3rem;
+        height: 3rem;
     }
-}
-.projcont
-{
-    border-radius: 36px;
-    box-shadow: -5px -5px 10px #4692cc,
-    5px 5px 10px #60caff;
+    #cright{
+        width: 100%;
+    }
+    table td:nth-child(3)
+    {
+        display: none;
+    }
+  }
+  .projcont
+  {
+    border-radius: 20px;
+    padding: 1.5rem;
     flex-direction: row;
     display: inline-block;
-    margin: 10px;
-}
-.projlist
-{
-    width: 220px;
-    height: 220px;
-    margin: 10px;
-    padding: 10px;
-}
+    margin: 0.75rem;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),
+                .3s box-shadow,
+                .3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  }
+  .projcont:hover,.icon:hover{
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12),
+              0 4px 8px rgba(0,0,0,.06);
+  }
+  .projlist
+  {
+    width: 250px;
+    height: 250px;
+    margin: 0.75rem;
+    padding: 0.75rem;
+  }
 
-.projtit
-{
+  .projtit
+  {
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
     text-align: left !important;
-}
+  }
 
-.projcatg
-{
+  .projcatg
+  {
+    font-weight: 800;
     font-style: italic;
     text-align: right !important;
-    color: #330099;
-}
-#anim
-{
-    margin: 2px;
-    animation: swing 3s ease-in-out infinite;
-    text-align: center;
-    font-family: 'Audiowide', cursive;
-}
-
-
-@keyframes swing
-{
-    0%
-    {
-        transform-origin: top;
-        transform: perspective(550px)rotatex(55deg);
-    }
-
-    50%
-    {
-        transform: perspective(550px)rotatex(-55deg);
-    }
-
-    100%
-    {
-        transform-origin: top;
-        transform: perspective(550px)rotatex(55deg);
-    }
-}
-a:hover
-{
-    color: red;
-}
-.projcont:hover,
-.icon:hover,
-#footer div:hover,
-table:hover,
-#acheivements:hover
-{
-    border: 2px solid white;
-}
-#footer
-{
-    position: relative;
-    bottom: 10%;
+    color:#9273ce;
+  }
+  a
+  {
+    text-decoration: none;
+  }
+  #footer
+  {
     flex-direction: row;
-}
-
-#footer div
-{
-    border-radius: 20px;
-    box-shadow: -5px -5px 10px #4692cc,
-    5px 5px 10px #60caff;
-    padding: 10px;
-    margin: 10px;
-    display: inline-block;
-}
-</style>
-
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+  #footer>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 1rem;
+    line-height: 1.7;
+  }
+  #footer a
+  {
+    color: rgba(255,255,255,.55);
+  }
+  #footer a:hover{
+    color: #fff;
+  }
+  .view_btn{
+    border-radius: 50px;
+    background-color:#fd5e53;
+    color: #fff;
+    border: 2px solid #fd5e53;
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+  .github_btn{
+    border-radius: 50px;
+    color:#fd5e53;
+    border: 2px solid #fd5e53;
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: all 0.5s linear;
+  }
+  .github_btn:hover{
+    color: #fff;
+    background-color: #fd5e53;
+  }
+  .view_btn:hover{
+    filter: brightness(0.85);
+  }
+  .github_btn a,
+  .view_btn a{
+    color: inherit;
+    padding: 0.25rem;
+  }
+  </style>
 </head>
-
-<body >
-    <article id ="header"  style="text-align: center;overflow: hidden">
-    <br>
-     <h1 id ="anim"> < S U N D A R /> </h1>
-     <text class ="txt" style="font-style: italic;font-family: monospace;color: #fff">-- Curious to explore the technical world and gain some knowledge --</text>
-    </article>
-    <br><br><br>
-     <article id ="skills">
-    <div id ="skillshead" onclick = "toggle('section-1')"><b>- - SKILLS - -</b></div>
-      <div id="section-1"  style="text-align: center">
-      <br><br><text class ="txt" style="text-align: center; font-weight: bold;color:#000">LEVEL: INTERMEDIATE</text><br><br>
-      <div class="icon"> <img   src="https://www.dropbox.com/s/p81a3cho8c0vmlo/html5.png?raw=1" alt="html5 logo, html logo" /><text class ="txt"><br>HTML</text></div>
-      <div class="icon"> <img  src="https://www.dropbox.com/s/c7gqgw56wmzg1zs/css-3.png?raw=1" alt="css logo"/><text class ="txt"><br> CSS </text></div>
-      <div class="icon"><img   src="https://www.dropbox.com/s/f77sv0pf7jb4wc2/JS.png?raw=1" alt="JS logo png" /><text class ="txt"><br> JS </text></div>
-      <div class="icon"><img   src="https://www.dropbox.com/s/527q6bmcvxn1uq7/jquery.png?raw=1"  alt="Jquery"/><text class ="txt"><br>JQUERY</text></div>
-      <div class="icon"><img  src="https://www.dropbox.com/s/phrarlctueo8akk/react.png?raw=1"  alt="React"/><text class ="txt"><br>REACT</text></div>
-      <div class="icon"><img   src="https://www.dropbox.com/s/2a93xi3vs92maff/C.png?raw=1" alt="C"/><text class ="txt"><br> C </text></div>
-      <div class="icon"><img   src="https://www.dropbox.com/s/8302cspj75jdfmr/C%2B%2B.png?raw=1" alt="C++"/><text class ="txt"><br> C++ </text></div>
-      <div class="icon"><img  src="https://www.dropbox.com/s/46jio2vumxqdg51/firebase.png?raw=1"  alt="firebase" /><text class ="txt"><br> FIREBASE </text></div>
-      <br><br><text  class ="txt" style="text-align: center; font-weight: bold;color:#000">LEVEL: NEWBIE</text><br><br>
-      <div class="icon"><img  src="https://www.dropbox.com/s/phrarlctueo8akk/react.png?raw=1"  alt="React"/><text class ="txt"><br>NATIVE</text></div>
-      <div class="icon"><img  src="https://www.dropbox.com/s/0tb5li3af9ee31a/python.png?raw=1"  alt="python" /><text class ="txt"><br> PYTHON </text></div>
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-offset="0" tabindex="0">
+  <nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span></button> 
+          <a class="navbar-brand" href="#">Sundar</a>
+      <div class="collapse navbar-collapse" id="navbarToggler">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#academics">Academics</a></li>
+          <li class="nav-item"><a class="nav-link" href="#personal">About-Me</a></li>
+        </ul>
       </div>
-    </article>
-     <article id ="projects" >
-         <div id ="projectshead" onclick = "toggle('section-2')"><b>- - PROJECTS - -</b></div>
-        <div id="section-2"  style="text-align: center;margin:10px;">
-        </div>
-    </article>
-     <article id ="academics">
-         <div id ="academicshead" onclick = "toggle('section-3')"><b>- - ACADEMICS - -</b></div>
-        <div id="section-3"  style="margin:20px;">
-         <br><br><br>
-        <table  style="text-align: center">
-            <tr  style="font-weight: bold">
-                <td>COURSE</td>
-                <td>INSTITUTE</td>
-                <td>YEAR OF PASSING</td>
-                <td>MARK-SCORED</td>
-            </tr>
-            <tr>
-                <td><span style="text-decoration: overline">B.E. (ECE)</span></td>
-                <td>Madras Institute of Technology,<br>Anna University</td>
-                <td>2022<br>(Expected)</td>
-                <td>CGPA 9.08</td>
-            </tr>
-            <tr>
-                <td>HSLC</td>
-                <td>Sri Jayendra Swamigal Silver Jubilee Mat. Hr Sec School,<br>Tirunelveli.</td>
-                <td>2018</td>
-                <td>98.1%</td>
-            </tr>
-            <tr>
-                <td>SSLC</td>
-                <td>Sri Jayendra Swamigal Silver Jubilee Mat. Hr Sec School,<br>Tirunelveli.</td>
-                <td>2016</td>
-                <td>98.2%</td>
-            </tr>
-        </table>
+    </div>
+  </nav>
+  <div id="intro">
+    <div id="intro_txt">
+      Hi I'm Sundar
+      <div style="color: rgba(0,0,0,0.3);font-size: 1.5rem;">
+        Budding Developer
+      </div><br>
+      <div id="intro_btn">
+        <a href="#skills" id="intro_link">Explore <i class="fas fa-arrow-circle-down"></i></a>
+      </div>
+    </div>
+    <div id="intro_img"></div>
+  </div>
+  <div id="skills" style="background-color: #fd5e53;color: #fff;">
+    <div id="skillshead">
+      <b>Skills</b>
+    </div>
+    <div id="section-1" style="text-align: center">
+      <br>
+      <br>
+      <span class="txt" style="text-align: center; font-weight: bold;color:#fff">LEVEL : INTERMEDIATE</span><br>
+      <br>
+      <div class="icon">
+        <img src="assets/html5.png" alt="html5 logo, html logo"><span class="txt"><br>HTML</span>
+      </div>
+      <div class="icon">
+        <img src="assets/css-3.png" alt="css logo"><span class="txt"><br>CSS</span>
+      </div>
+      <div class="icon">
+        <img src="assets/JS.png" alt="JS logo png"><span class="txt"><br>JS</span>
+      </div>
+      <div class="icon">
+        <img src="assets/jquery.png" alt="Jquery"><span class="txt"><br>JQuery</span>
+      </div>
+      <div class="icon">
+        <img src="assets/react.png" alt="React"><span class="txt"><br>React</span>
+      </div>
+      <div class="icon">
+        <img src="assets/C.png" alt="C"><span class="txt"><br>C</span>
+      </div>
+      <div class="icon">
+        <img src="assets/C++.png" alt="C++"><span class="txt"><br>C++</span>
+      </div>
+      <div class="icon">
+        <img src="assets/firebase.png" alt="firebase"><span class="txt"><br>Firebase</span>
+      </div><br>
+      <br>
+      <span class="txt" style="text-align: center; font-weight: bold;color:#fff">LEVEL : NEWBIE</span><br>
+      <br>
+      <div class="icon">
+        <img src="assets/react.png" alt="React"><span class="txt"><br>Native</span>
+      </div>
+      <div class="icon">
+        <img src="assets/react.png" alt="python"><span class="txt"><br>Python</span>
+      </div>
+      <div class="icon">
+        <img src="assets/bootstrap.png" alt="bootstrap"><span class="txt"><br>Bootstrap</span>
+      </div>
+    </div>
+  </div>
+  <div id="projects">
+    <div id="projectshead">
+      <b>Projects</b>
+    </div>
+    <div id="section-2" style="text-align: center;margin: 2rem 0;"></div>
+  </div>
+  <div id="academics" style="background-color: #ffe0e0">
+    <div id="academicshead">
+      <b>Academics</b>
+    </div>
+    <div id="section-3">
+      <table style="text-align: center">
+        <tr style="font-weight: bold">
+          <td>COURSE</td>
+          <td>INSTITUTE</td>
+          <td>YEAR OF PASSING</td>
+          <td>MARK-SCORED</td>
+        </tr>
+        <tr>
+          <td><span style="text-decoration: overline">B.E. (ECE)</span></td>
+          <td>Madras Institute of Technology,<br>
+          Anna University</td>
+          <td>2022<br>(Expected)</td>
+          <td>CGPA 9.1</td>
+        </tr>
+        <tr>
+          <td>HSLC</td>
+          <td>Sri Jayendra Swamigal Silver Jubilee Mat. Hr Sec School,<br>Tirunelveli.</td>
+          <td>2018</td>
+          <td>98.1%</td>
+        </tr>
+        <tr>
+          <td>SSLC</td>
+          <td>Sri Jayendra Swamigal Silver Jubilee Mat. Hr Sec School,<br>Tirunelveli.</td>
+          <td>2016</td>
+          <td>98.2%</td>
+        </tr>
+      </table>
+      <div id="acheivements">
         <br>
-        <div id="acheivements">
-           <br>
-           <div class ="txt" style="text-align: center; font-weight: bold;color:#000">ACHIEVEMENTS</div>
-            <ul class ="txt" style="color:#000; font-weight: normal; padding-top: 20px;padding-right: 20px" >
-                <li>Certificate of Brilliance in AITSE</li>
-                <li>Cleared NISO twice with AIR 4 & 5</li>
-                <li>Reginoal Second place in TMAQ</li>
-
-            </ul>
+        <div style="text-align: center; font-weight: bold;color:#000">
+          Achievements
         </div>
-         </div>
-    </article>
+        <ul class="txt" style="color:#000; font-weight: normal; padding-top: 20px;padding-right: 20px">
+          <li>Certificate of Brilliance in AITSE</li>
+          <li>Cleared NISO twice with AIR 4 & 5</li>
+          <li>Reginoal Second place in TMAQ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="personal" style="background-color: #e3f6f5;">
+    <div id="personalhead">
+      <b>About-me</b>
+    </div>
+    <div id="section-4">
+      <table>
+        <tr>
+          <td style="font-weight: bold">Name:</td>
+          <td>D.Sundara Lingam</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold">Gender:</td>
+          <td>Male</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold">Age:</td>
+          <td id="age"></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold">E-mail:</td>
+          <td><a href="mailto:sundarlinga6@gmail.com">sundarlinga6@gmail.com</a></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold">Mobile-no:</td>
+          <td>6379633784</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold">Address:</td>
+          <td>1,kulasekara alwar street,<br>
+          Palayamkottai,<br>
+          Tirunelveli-627002<br>
+          TamilNadu</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold">Nationality:</td>
+          <td>Indian</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold">Languages:</td>
+          <td>English - Speak,Write & Type<br>
+          Tamil - Speak & Write</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold">Hobbies:</td>
+          <td>Quizzing & Gaming</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div id="footer" style="background: #212529;">
+    <div id="cright" style="align-self: center;font-weight: 600;">
+      Made with ❤️ by Sundar
+    </div>
+    <div id="explore">
+      <div style="font-weight: 600;">
+        Explore
+      </div>
+      <div style="padding-top: 1rem;">
+        <a href="#skills">Skills</a>
+      </div>
+      <div>
+        <a href="#projects">Projects</a>
+      </div>
+      <div>
+        <a href="#academics">Academics</a>
+      </div>
+      <div>
+        <a href="#personal">About-me</a>
+      </div>
+    </div>
+    <div id="connect">
+      <div style="font-weight: 600;">
+        Connect
+      </div>
+      <div style="padding-top: 1rem;">
+        <a href="https://github.com/sundar-2000"><i class="fab fa-github"></i> Github</a>
+      </div>
+      <div>
+        <a href="https://www.instagram.com/s._u._n._d._a._r/"><i class="fab fa-instagram"></i> Instagram</a>
+      </div>
+      <div>
+        <a href="https://www.linkedin.com/in/sundara-lingam-70b363191/"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+  </div>
+  <script>
 
-    <article id = "personal">
-        <div id ="personalhead" onclick = "toggle('section-4')"><b>- - ABOUT-ME - -</b></div>
-        <div id="section-4">
-            <br><br><br>
-           <table >
+  $('.navbar-nav>li>a').on('click', function() {
+    $('.navbar-collapse').collapse('hide');
+    });
+  document.getElementById("age").innerHTML = new Date().getMonth()>8?new Date().getFullYear() - 2000:new Date().getFullYear()-2001;
+  </script>
+  <script type="text/babel">
 
-            <tr>
-                <td  style="font-weight: bold">Name:</td>
-                <td>  D.Sundara Lingam</td>
-            </tr>
-            <tr>
-                <td style="font-weight: bold">Gender:</td>
-                <td>  Male</td>
-            </tr>
-            <tr>
-                <td style="font-weight: bold">Age:</td>
-                <td id ="age"> </td>
-            </tr>
-            <tr>
-                <td style="font-weight: bold">E-mail:</td>
-                <td><a href = "mailto: sundarlinga6@gmail.com">  sundarlinga6@gmail.com</a></td>
-            </tr>
-            <tr>
-                <td style="font-weight: bold">Mobile-no:</td>
-                <td>  6379633784</td>
-            </tr>
-            <tr>
-                <td style="font-weight: bold">Address:</td>
-                <td>  1,kulasekara alwar street,<br>Palayamkottai,<br>Tirunelveli-627002<br>TamilNadu</td>
-            </tr>
-             <tr>
-                <td style="font-weight: bold">Nationality: </td>
-                <td>    Indian</td>
-            </tr>
-            <tr>
-                <td style="font-weight: bold">Languages: </td>
-                <td>    English - Speak,Write & Type<br>Tamil - Speak & Write</td>
-            </tr>
-            <tr>
-                <td style="font-weight: bold">Hobbies: </td>
-                <td>    Quizzing & Gaming</td>
-            </tr>
-        </table>
-        <br><br>
-       </div>
-    </article>
-    <br><br><br>
-<article id="footer">
-<div><a href="tel:+91-637-963-3784">
-    <img src="https://www.dropbox.com/s/gji5tzeakyap232/smartphone-call.png?raw=1" width="30" height="30" alt="call" />
-</a></div>
-<div><a href = "https://wa.link/3w7cvk">
-    <img src="https://www.dropbox.com/s/joh2o0ke3vnsku9/whatsapp.png?raw=1" width="30" height="30"  alt="whatsapp" />
-</a></div>
-<div><a href ="https://www.instagram.com/s._u._n._d._a._r/">
-    <img src="https://www.dropbox.com/s/tmdrvt3jq9hncnn/instagram.png?raw=1" width="30" height="30" alt="insta" />
-</a></div>
-
-
-
-</article>
-
-</body>
-<script>
-$("#section-3").slideUp("fast");
-$("#section-4").slideUp("fast");
-document.getElementById("age").innerHTML = new Date().getFullYear() - 2000;
-
-//sliding event
-function toggle(show)
-{
-
-  $('#'+show).fadeToggle("slow");
-
-}
-</script>
-<script type="text/babel">
-//using react to create project containers
-class Projects extends React.Component {
+  //using react to create project containers
+  class Projects extends React.Component {
        constructor(){
         super();
         //project datas
         this.state = {
             project:[
-              {
-                id: 7,
+            {
+                id: 6,
+                title: "Quizinato",
+                category: "(Web)",
+                description: "A progressive web app for multiplayer quiz game",
+                used:  ["Open Trivia API",
+                        "Firebase",
+                        "PWA implementation"
+                        ],
+                link: "https://quizinato.web.app/",
+                repo: "https://github.com/3-bro-grammers/Quizz_app"
+              },
+             {
+                id: 5,
                 title: "News-App",
                 category: "(Android/ios)",
                 description: "Know the headlines and search through old articles",
@@ -397,10 +531,10 @@ class Projects extends React.Component {
                 repo: "https://github.com/sundar-2000/news-app"
               },
               {
-                id: 6,
+                id: 4,
                 title: "Askimo",
                 category: "(Web)",
-                description: "User Interactive chatbot that searches through wikipedia",
+                description: "User Interactive chatbot that scrolls through wikipedia",
                 used:  ["Wikipedia Rest-API",
                         "Stopword - filtering","Vannila-JS"
                         ],
@@ -408,10 +542,10 @@ class Projects extends React.Component {
                 repo: "https://github.com/sundar-2000/chatbot"
               },
               {
-                id: 5,
+                id: 3,
                 title: "Justpay",
                 category: "(Web)",
-                description: "A mobile payment app that has login and sign-in feature",
+                description: "A webapp to simulate mobile payment",
                 used:  ["Firebase RTDatabase",
                         "Neumorphic UI"
                         ],
@@ -419,51 +553,25 @@ class Projects extends React.Component {
                 repo: "https://github.com/sundar-2000/justpay"
               },
               {
-                id: 4,
-                title: "Weather-App",
+                id: 2,
+                title: "WeatherMan",
                 category: "(Web)",
-                description: "Webapp to know the weather of any area",
-                used:  ["Openweathermap-API",
+                description: "Webapp to know and share the weather of any area",
+                used:  ["Weathermap-API",
                         "Glassmorphism"
                         ],
                 link: "https://sundar-2000.github.io/weatherapp/",
                 repo: "https://github.com/sundar-2000/weatherapp"
               },
               {
-                id: 3,
+                id: 1,
                 title: "Handcricket",
                 category: "(Web)",
                 description: "Play handcricket with bot and relive your childhood",
-                used:  ["Vannila-JS"
+                used:  ["Vanilla-JS"
                         ],
                 link: "https://sundar-2000.github.io/handcricket/",
                 repo: "https://github.com/sundar-2000/handcricket"
-              },
-              {
-                id: 2,
-                title: "Greenhouse Monitoring",
-                category: "(Electronics)",
-                description: "Monitors soil moisture and temperature",
-                used:  ["Arduino",
-                        "YL-38 sensor",
-                        "LM35 sensor"
-                        ],
-                link: "",
-                repo: ""
-
-              },
-              {
-                id: 1,
-                title: "DTMF Decoder",
-                category: "(Electronics)",
-                description: "Use your phone as a switch for electrical devices",
-                used:  ["IC-MT8870DE",
-                        "IC-555"
-
-                        ],
-                link: "",
-                repo: ""
-
               }
 
               ]
@@ -476,14 +584,14 @@ class Projects extends React.Component {
             <div>
                { project.map((data)=>{
                                 return(
-                                    <article className="projcont" >
+                                    <article className="projcont">
                                      <div  className="projlist">
                                        <div>
                                        <div  className="projtit">{data.title}
                                        <div className="projcatg">{data.category}</div></div>
                                        </div>
                                         <div style={{textAlign: "left"}}><text className="projdes">{data.description}</text></div>
-                                        <div style={{color: "#bb0d57",height:"40%",textAlign: "left"}}>
+                                        <div style={{color: "rgba(0,0,0,.5)",height:"40%",textAlign: "left",padding:"0.25rem",fontWeight: "600"}}>
                                          <ul>
                                          {data.used.map((item) => (
                                          <li>{item}</li>
@@ -491,11 +599,9 @@ class Projects extends React.Component {
                                           }
                                           </ul>
                                         </div>
-                                        <br />
-                                          <div style={{fontWeight: "bold",textAlign: "right"}}>
-                                         { data.link!="" ?  <span> | <a href= {data.link}><u>View</u></a></span>: <span style={{color: "transparent"}} >_</span>}
-                                         { data.repo!="" ?  <span> | <a href= {data.repo}><u>Git-Repo</u></a></span>: <span> </span>}
-
+                                          <div style={{display: "flex",justifyContent: "space-between",margin:"1rem 0"}}>
+                                        <div className="github_btn"> <a  href= {data.repo} target="_blank"><i class="fab fa-github"></i> Github</a></div>
+                                        <div className="view_btn"> <a  href= {data.link} target="_blank"><i class="fas fa-eye"></i> View</a></div>
                                         </div>
                                      </div>
                                     </article>
@@ -509,12 +615,9 @@ class Projects extends React.Component {
             </div>
         )
     }
-}
+  }
 
-ReactDOM.render(<Projects />, document.getElementById('section-2'))
-
-
-
-</script>
-
+  ReactDOM.render(<Projects />, document.getElementById('section-2'));
+ </script>
+</body>
 </html>
