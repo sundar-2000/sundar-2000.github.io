@@ -2,10 +2,17 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="shortcut icon" type="image/jpg" href="assets/slogo.png">
   <meta name="viewport" content="width=device-width,initialscale=1,maximum-scale=1,user-scalable=no">
   <meta name="title" content="Sundar's Resume">
-  <meta name="description" content="Want to konw about me??">
+  <meta name="description" content="Visit my website to know about me">
   <title>Sundar's Resume</title>
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sundar-2000.github.io/">
+  <meta property="og:title" content="Sundar">
+  <meta property="og:description" content="Visit my website to know about me">
+  <meta property="og:image" content="https://sundar-2000.github.io/assets/slogo.png">
   <!--fonts-->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
@@ -236,7 +243,6 @@
   #footer>div{
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     color: #fff;
     padding: 1rem;
@@ -284,7 +290,8 @@
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span></button> 
-          <a class="navbar-brand" href="#">Sundar</a>
+          <a class="navbar-brand" href="#">
+            <img src="assets/slogo.png" height="24" class="d-inline-block align-text-top"/> Sundar</a>
       <div class="collapse navbar-collapse" id="navbarToggler">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
